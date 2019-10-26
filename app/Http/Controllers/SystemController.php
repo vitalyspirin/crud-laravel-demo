@@ -18,7 +18,6 @@ class SystemController extends Controller
         return view('system', compact('info'));
     }
 
-
     protected function getInfo(): array
     {
         $info = [

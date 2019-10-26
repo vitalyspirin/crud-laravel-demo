@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserFormRequest;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
-use App\User;
-use App\Http\Requests\UserFormRequest;
 
 class UserController extends Controller
 {
@@ -52,7 +51,6 @@ class UserController extends Controller
 
         $user->save();
 
-
         return redirect('/users')->with('success', "User '{$user->user_email}' has been added.");
     }
 
@@ -97,7 +95,6 @@ class UserController extends Controller
 
         $user->update($request->input());
 
-
         return redirect('/users')->with('success', 'User has been updated');
     }
 
@@ -115,7 +112,6 @@ class UserController extends Controller
     }
 
     /**
-     *
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
@@ -130,7 +126,6 @@ class UserController extends Controller
     }
 
     /**
-     *
      * @param  int $id
      * @return \Illuminate\Http\Response
      */

@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
-
     /**
      * Run the database seeds.
      *
@@ -28,7 +27,7 @@ class UsersTableSeeder extends Seeder
                         'address_province' => 'BC',
                         'address_country' => 'Canada',
                         'address_postal' => 'V3J 1Z9',
-                        'address_default' => true
+                        'address_default' => true,
                     ],
                     [
                         'address_type' => 'Work',
@@ -37,24 +36,23 @@ class UsersTableSeeder extends Seeder
                         'address_province' => 'BC',
                         'address_country' => 'Canada',
                         'address_postal' => 'V5K 2A9',
-                        'address_default' => false
+                        'address_default' => false,
                     ],
                 ]),
                 'user_contact' => json_encode([
                     [
                         'contact_type' => 'Email',
                         'contact_value' => 'vitaly.spirin@gmail.com',
-                        'contact_default' => true
+                        'contact_default' => true,
                     ],
                     [
                         'contact_type' => 'Phone',
                         'contact_value' => '604-603-1647',
-                        'contact_default' => false
+                        'contact_default' => false,
                     ],
                 ]),
 
             ],
-
 
             [
                 'user_firstname' => 'John',
@@ -63,9 +61,8 @@ class UsersTableSeeder extends Seeder
                 'user_email' => 'john.black@gmail.com',
                 'user_passwordhash' => Hash::make('john'),
                 'user_address' => json_encode([]),
-                'user_contact' => json_encode([])
+                'user_contact' => json_encode([]),
             ],
-
 
             [
                 'user_firstname' => 'David',
@@ -74,9 +71,8 @@ class UsersTableSeeder extends Seeder
                 'user_email' => 'david.green@gmail.com',
                 'user_passwordhash' => Hash::make('david'),
                 'user_address' => json_encode([]),
-                'user_contact' => json_encode([])
+                'user_contact' => json_encode([]),
             ],
-
 
             [
                 'user_firstname' => 'Adam',
@@ -85,8 +81,8 @@ class UsersTableSeeder extends Seeder
                 'user_email' => 'adam.brown@gmail.com',
                 'user_passwordhash' => Hash::make('adam'),
                 'user_address' => json_encode([]),
-                'user_contact' => json_encode([])
-            ]
+                'user_contact' => json_encode([]),
+            ],
 
         ]);
     }

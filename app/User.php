@@ -2,11 +2,8 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
-use App\Observers\UserObserver;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -20,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'user_firstname', 'user_lastname', 'user_email'
+        'user_firstname', 'user_lastname', 'user_email',
     ];
 
     /**
@@ -40,7 +37,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'user_address' => 'array',
-        'user_contact' => 'array'
+        'user_contact' => 'array',
     ];
 
     public function getAuthPassword()
@@ -54,9 +51,9 @@ class User extends Authenticatable
 
         $elementList = ['address_street', 'address_city', 'address_province', 'address_country', 'address_postal'];
 
-        foreach($elementList as $element) {
-            if (!empty($address[$element])) {
-                if (!empty($result)) {
+        foreach ($elementList as $element) {
+            if (! empty($address[$element])) {
+                if (! empty($result)) {
                     $result .= ', ';
                 }
 
