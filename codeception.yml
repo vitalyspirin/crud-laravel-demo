@@ -1,0 +1,26 @@
+paths:
+    tests: tests
+    output: tests/_output
+    data: tests/_data
+    support: tests/_support
+    envs: tests/_envs
+actor_suffix: Tester
+extensions:
+    enabled:
+        - Codeception\Extension\RunFailed
+coverage:
+    enabled: true
+    remote: false
+    include:
+        - app/*.php
+        - routes/web.php
+    exclude:
+        - app/Console/*
+        # - app/Exceptions/*
+        - app/Http/Kernel.php
+        - app/Http/Controllers/Controller.php
+        - app/Http/Controllers/Auth/R*
+        - app/Http/Controllers/Auth/V*
+        - app/Http/Controllers/Auth/F*
+        - app/Http/Middleware/*
+        - app/Providers/*

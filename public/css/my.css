@@ -1,0 +1,61 @@
+
+html {
+    font-size: 18px;
+}
+html, body {
+    height: 100%;
+}
+body > .container {
+    min-height: 100%;
+}
+.uper {
+    margin-top: 40px;
+}
+
+nav a.nav-link {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+nav .nav-link:hover {
+    color: rgba(255, 255, 255, 0.75);
+}
+nav.navbar {
+    padding: 0;
+}
+.btn.btn-info {
+    color: white;
+}
+
+dt, dd {
+    display: inline-block;
+}
+
+dd {
+    margin-left: 0.5rem;
+}
+#html5-validator-link img {
+    /*margin-top: -64px;*/
+    position: absolute;
+    left: 50%;
+}
+
+button {
+    background-color: #E1E1E1;
+}
+
+
+
+/* General ---------------------------------------------------------------- */
+
+.min-vh-100 {
+    min-height: 100vh;
+}
+
+.mt-6 {
+    margin-top: 6rem;
+}
+
+.negative-margins {
+    margin-left: -15px;
+    margin-right: -15px;
+}
