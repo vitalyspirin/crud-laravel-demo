@@ -35,7 +35,7 @@ class SystemController extends Controller
 
     protected function getOSPrettyName()
     {
-        $os_release = file_get_contents('/etc/os-release');
+        $os_release = (string) file_get_contents('/etc/os-release');
 
         $propertyList = parse_ini_string($os_release);
 

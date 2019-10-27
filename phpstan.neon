@@ -1,0 +1,7 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+parameters:
+    ignoreErrors:
+        - '#Cannot access property \$user_isenabled on App\\User#'
+        - '#Cannot access property \$user_email on App\\User#'
+        - '#Cannot call method save\(\) on App\\User#'
