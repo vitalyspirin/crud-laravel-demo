@@ -118,13 +118,11 @@ class UserController extends Controller
     }
 
     /**
-     * @param  int $id
+     * @param  User $user
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function enable(int $id)
+    public function enable(User $user)
     {
-        $user = User::find($id);
-
         $user->user_isenabled = true;
         $user->save();
 
@@ -132,13 +130,11 @@ class UserController extends Controller
     }
 
     /**
-     * @param  int $id
+     * @param  User $user
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function disable(int $id)
+    public function disable(User $user)
     {
-        $user = User::find($id);
-
         $user->user_isenabled = false;
         $user->save();
 

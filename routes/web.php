@@ -20,7 +20,7 @@ Route::post('login', ['as' => 'login.post', 'uses' => 'Auth\LoginController@logi
 Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 
 Route::resource('users', 'UserController')->middleware('auth');
-Route::post('users/{user_id}/enable', ['as' => 'users.enable', 'uses' => 'UserController@enable']);
-Route::post('users/{user_id}/disable', ['as' => 'users.disable', 'uses' => 'UserController@disable']);
+Route::post('users/{user}/enable', ['as' => 'users.enable', 'uses' => 'UserController@enable']);
+Route::post('users/{user}/disable', ['as' => 'users.disable', 'uses' => 'UserController@disable']);
 
 Route::get('system', ['as' => 'system', 'uses' => 'SystemController@index']);
