@@ -44,6 +44,21 @@ button {
 }
 
 
+.contact-section {
+    border: 1px solid grey;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+.delete-contact-section {
+    margin: -0.5rem -0.5rem 0 0;
+    cursor: pointer;
+}
+
+#user-form #submit-button, #user-form #cancel-button {
+    margin-top: 2rem;
+}
 
 /* General ---------------------------------------------------------------- */
 

@@ -41,38 +41,55 @@
           </div>
         </div>
 
+        <div id="contact-section-list">
+          <input type="hidden" name="user_contact[contact_default]" value="-1" />
+          <input type="hidden" id="user_contact_max_index" value="{{ count($user->user_contact) }}" />
 
-        @foreach ($user->user_contact as $contact)
-            <hr class="row" />
+          <template id="contact-template">
+            @include('users._contact', [
+              'key' => -1,
+              'contact' => ['contact_default' => '', 'contact_type' => '', 'contact_value' => '']
+            ])
+          </template>
 
-            <div class="form-group row">
-              <div class="col-2">
-                <label>Default:
-                  <input type="radio" class="form-control" name="user_contact[contact_default]"
-                    {{ ($contact['contact_default'] ? 'checked="checked"' : '') }}
-                    value="{{ $loop->iteration }}" />
-                </label>
-              </div>
+          @each('users._contact', $user->user_contact, 'contact')
+        </div>
 
-              <div class="col-4">
-                <label class="w-100">Contact Type:
-                  <input type="text" class="form-control" name="user_contact[{{$loop->iteration}}][contact_type]"
-                    value="{{ old('contact_type' . $loop->iteration, $contact['contact_type']) }}" />
-                </label>
-              </div>
+        <button type="button" class="btn btn-light" onclick="Form.addContactSection()">Add Contact</button>
 
-              <div class="col-6">
-                <label class="w-100">Contact Value:
-                  <input type="text" class="form-control" name="user_contact[{{$loop->iteration}}][contact_value]"
-                    value="{{ old('contact_value' . $loop->iteration, $contact['contact_value']) }}" />
-                </label>
-              </div>
-            </div>
-        @endforeach
+        <hr />
 
-        <a href="{{ route('users.index') }}" class="float-right font-weight-bold">Cancel</a>
+        <a id="cancel-button" href="{{ route('users.index') }}" class="float-right font-weight-bold">Cancel</a>
 
-        <button type="submit" id="submit-button" on click="ThumbnailForm.submit('user-form')" class="btn btn-primary">Submit</button>
+        <button type="submit" id="submit-button" class="btn btn-primary">Submit</button>
 
 
+<script>
+  class Form {
+    static deleteSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      section.style.display = "none";
 
+      const inputList = section.querySelectorAll('input');
+      inputList.forEach((inputElement) => {
+        inputElement.disabled = true;
+      })
+
+    }
+
+    static addContactSection() {
+      const index = 1 + parseInt(document.getElementById('user_contact_max_index').value);
+
+      const contactTemplate = document.getElementById('contact-template');
+      const newContactSection = document.importNode(contactTemplate.content, true);
+
+      newContactSection.querySelector('input.contact_type').name = 'user_contact[' + index + '][contact_type]';
+      newContactSection.querySelector('input.contact_value').name = 'user_contact[' + index + '][contact_value]';
+
+
+      document.getElementById('contact-section-list').appendChild(newContactSection);
+
+      document.getElementById('user_contact_max_index').value = index;
+    }
+  }
+</script>

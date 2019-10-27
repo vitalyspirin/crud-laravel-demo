@@ -31,4 +31,22 @@ class UserFormRequest extends FormRequest
             'password' => 'required_without:user_id|confirmed',
         ];
     }
+
+    public function processContactsAndAddresses(array $input)
+    {
+        if (! empty($input['user_contact'])) {
+            $defaultContact = $input['user_contact']['contact_default'];
+            unset($input['user_contact']['contact_default']);
+
+            foreach ($input['user_contact'] as $index=>$contact) {
+                if ($defaultContact == $index) {
+                    $input['user_contact'][$index]['contact_default'] = true;
+                } else {
+                    $input['user_contact'][$index]['contact_default'] = false;
+                }
+            }
+        }
+
+        return $input;
+    }
 }

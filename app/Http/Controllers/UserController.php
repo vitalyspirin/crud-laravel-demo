@@ -43,7 +43,9 @@ class UserController extends Controller
     {
         $validated = $request->validated();
 
-        $user = new User($request->input());
+        $input = $request->processContactsAndAddresses($request->input());
+
+        $user = new User($input);
 
         if (! empty($request->input('password'))) {
             $user->user_passwordhash = Hash::make($request->input('password'));
@@ -93,20 +95,7 @@ class UserController extends Controller
             $user->user_passwordhash = Hash::make($request->input('password'));
         }
 
-        $input = $request->input();
-
-        if (! empty($input['user_contact'])) {
-            $defaultContact = $input['user_contact']['contact_default'];
-            unset($input['user_contact']['contact_default']);
-
-            foreach ($input['user_contact'] as $index=>$contact) {
-                if ($defaultContact == $index) {
-                    $input['user_contact'][$index]['contact_default'] = true;
-                } else {
-                    $input['user_contact'][$index]['contact_default'] = false;
-                }
-            }
-        }
+        $input = $request->processContactsAndAddresses($request->input());
 
         $user->update($input);
 
