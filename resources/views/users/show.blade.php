@@ -49,7 +49,6 @@
                 <dd>{{ $contact['contact_value'] }}</dd>
             </div>
         </dl>
-
     @endforeach
 
 

@@ -14,13 +14,13 @@ class UserObserver
      */
     public function saving(User $user)
     {
-        if ($user->user_address === null) {
-            $user->user_address = [];
-        }
+        // if ($user->user_address === null) {
+        //     $user->user_address = [];
+        // }
 
-        if ($user->user_contact === null) {
-            $user->user_contact = [];
-        }
+        // if ($user->user_contact === null) {
+        //     $user->user_contact = [];
+        // }
     }
 
     /**

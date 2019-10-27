@@ -80,8 +80,43 @@ class UsersTableSeeder extends Seeder
                 'user_isenabled' => true,
                 'user_email' => 'adam.brown@gmail.com',
                 'user_passwordhash' => Hash::make('adam'),
-                'user_address' => json_encode([]),
-                'user_contact' => json_encode([]),
+                'user_address' => json_encode([
+                    [
+                        'address_type' => 'Home',
+                        'address_street' => '1 Main St',
+                        'address_city' => 'Vancouver',
+                        'address_province' => 'BC',
+                        'address_country' => 'Canada',
+                        'address_postal' => ' V6A 2T4',
+                        'address_default' => true,
+                    ],
+                    [
+                        'address_type' => 'Work',
+                        'address_street' => '1111 W Georgia St',
+                        'address_city' => 'Vancouver',
+                        'address_province' => 'BC',
+                        'address_country' => 'Canada',
+                        'address_postal' => 'V6E 4M3',
+                        'address_default' => false,
+                    ],
+                ]),
+                'user_contact' => json_encode([
+                    [
+                        'contact_type' => 'Email',
+                        'contact_value' => 'adam.brown@gmail.com',
+                        'contact_default' => true,
+                    ],
+                    [
+                        'contact_type' => 'Phone',
+                        'contact_value' => '604-666-1111',
+                        'contact_default' => false,
+                    ],
+                    [
+                        'contact_type' => 'Whatsapp',
+                        'contact_value' => 'AdamB',
+                        'contact_default' => false,
+                    ],
+                ]),
             ],
 
         ]);

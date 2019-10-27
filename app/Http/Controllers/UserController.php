@@ -93,7 +93,24 @@ class UserController extends Controller
             $user->user_passwordhash = Hash::make($request->input('password'));
         }
 
-        $user->update($request->input());
+        $input = $request->input();
+
+        if (! empty($input['user_contact'])) {
+            $defaultContact = $input['user_contact']['contact_default'];
+            unset($input['user_contact']['contact_default']);
+
+            foreach ($input['user_contact'] as $index=>$contact) {
+                if ($defaultContact == $index) {
+                    $input['user_contact'][$index]['contact_default'] = true;
+                } else {
+                    $input['user_contact'][$index]['contact_default'] = false;
+                }
+            }
+        }
+
+        $user->update($input);
+
+        $user->save();
 
         return redirect('/users')->with('success', 'User has been updated');
     }

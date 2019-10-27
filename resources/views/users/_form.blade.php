@@ -42,6 +42,34 @@
         </div>
 
 
+        @foreach ($user->user_contact as $contact)
+            <hr class="row" />
+
+            <div class="form-group row">
+              <div class="col-2">
+                <label>Default:
+                  <input type="radio" class="form-control" name="user_contact[contact_default]"
+                    {{ ($contact['contact_default'] ? 'checked="checked"' : '') }}
+                    value="{{ $loop->iteration }}" />
+                </label>
+              </div>
+
+              <div class="col-4">
+                <label class="w-100">Contact Type:
+                  <input type="text" class="form-control" name="user_contact[{{$loop->iteration}}][contact_type]"
+                    value="{{ old('contact_type' . $loop->iteration, $contact['contact_type']) }}" />
+                </label>
+              </div>
+
+              <div class="col-6">
+                <label class="w-100">Contact Value:
+                  <input type="text" class="form-control" name="user_contact[{{$loop->iteration}}][contact_value]"
+                    value="{{ old('contact_value' . $loop->iteration, $contact['contact_value']) }}" />
+                </label>
+              </div>
+            </div>
+        @endforeach
+
         <a href="{{ route('users.index') }}" class="float-right font-weight-bold">Cancel</a>
 
         <button type="submit" id="submit-button" on click="ThumbnailForm.submit('user-form')" class="btn btn-primary">Submit</button>
