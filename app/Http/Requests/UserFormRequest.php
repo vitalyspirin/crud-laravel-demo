@@ -47,6 +47,19 @@ class UserFormRequest extends FormRequest
             }
         }
 
+        if (! empty($input['user_address'])) {
+            $defaultAddress = $input['user_address']['address_default'];
+            unset($input['user_address']['address_default']);
+
+            foreach ($input['user_address'] as $index=>$contact) {
+                if ($defaultAddress == $index) {
+                    $input['user_address'][$index]['address_default'] = true;
+                } else {
+                    $input['user_address'][$index]['address_default'] = false;
+                }
+            }
+        }
+
         return $input;
     }
 }

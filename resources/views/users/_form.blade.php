@@ -59,6 +59,32 @@
 
         <hr />
 
+        <div id="address-section-list">
+          <input type="hidden" name="user_address[address_default]" value="-1" />
+          <input type="hidden" id="user_address_max_index" value="{{ count($user->user_address) }}" />
+
+          <template id="address-template">
+            @include('users._address', [
+              'key' => -1,
+              'address' => [
+                'address_default' => '',
+                'address_type' => '',
+                'address_street' => '',
+                'address_city' => '',
+                'address_province' => '',
+                'address_country' => '',
+                'address_postal' => ''
+              ]
+            ])
+          </template>
+
+          @each('users._address', $user->user_address, 'address')
+        </div>
+
+        <button type="button" class="btn btn-light" onclick="Form.addAddressSection()">Add Address</button>
+
+        <hr />
+
         <a id="cancel-button" href="{{ route('users.index') }}" class="float-right font-weight-bold">Cancel</a>
 
         <button type="submit" id="submit-button" class="btn btn-primary">Submit</button>
@@ -83,6 +109,7 @@
       const contactTemplate = document.getElementById('contact-template');
       const newContactSection = document.importNode(contactTemplate.content, true);
 
+      newContactSection.querySelector('input.contact_default').value = index;
       newContactSection.querySelector('input.contact_type').name = 'user_contact[' + index + '][contact_type]';
       newContactSection.querySelector('input.contact_value').name = 'user_contact[' + index + '][contact_value]';
 
@@ -90,6 +117,26 @@
       document.getElementById('contact-section-list').appendChild(newContactSection);
 
       document.getElementById('user_contact_max_index').value = index;
+    }
+
+    static addAddressSection() {
+      const index = 1 + parseInt(document.getElementById('user_address_max_index').value);
+
+      const addressTemplate = document.getElementById('address-template');
+      const newAddressSection = document.importNode(addressTemplate.content, true);
+
+      newAddressSection.querySelector('input.address_default').value = index;
+      newAddressSection.querySelector('input.address_type').name = 'user_address[' + index + '][address_type]';
+      newAddressSection.querySelector('input.address_street').name = 'user_address[' + index + '][address_street]';
+      newAddressSection.querySelector('input.address_city').name = 'user_address[' + index + '][address_city]';
+      newAddressSection.querySelector('input.address_province').name = 'user_address[' + index + '][address_province]';
+      newAddressSection.querySelector('input.address_country').name = 'user_address[' + index + '][address_country]';
+      newAddressSection.querySelector('input.address_postal').name = 'user_address[' + index + '][address_postal]';
+
+
+      document.getElementById('address-section-list').appendChild(newAddressSection);
+
+      document.getElementById('user_address_max_index').value = index;
     }
   }
 </script>

@@ -6,7 +6,7 @@
             <div class="form-group row">
               <div class="col-2">
                 <label>Default:
-                  <input type="radio" class="form-control contact_default" name="user_contact[contact_default]"
+                  <input type="radio" class="contact_default" name="user_contact[contact_default]"
                     {!! ($contact['contact_default'] ? 'checked="checked"' : '') !!}
                     value="{{ $key + 1 }}" />
                 </label>

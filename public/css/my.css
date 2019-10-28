@@ -44,14 +44,19 @@ button {
 }
 
 
-.contact-section {
+.contact-section, .address-section {
     border: 1px solid grey;
     margin-bottom: 2rem;
     margin-top: 2rem;
     padding: 1rem;
 }
 
-.delete-contact-section {
+.contact-section input[type="radio"], .address-section input[type="radio"] {
+    display: block;
+    margin: 1rem;
+}
+
+.delete-contact-section, .delete-address-section {
     margin: -0.5rem -0.5rem 0 0;
     cursor: pointer;
 }
