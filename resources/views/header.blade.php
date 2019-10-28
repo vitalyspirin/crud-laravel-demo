@@ -1,6 +1,6 @@
 
-<nav class="navbar col-12 navbar-expand-lg navbar-dark bg-dark">
-  <img src="{{'/images/Logo.png'}}" alt="" />
+<nav class="navbar col-12 navbar-expand-md navbar-dark bg-dark">
+  <img class="logo" src="{{'/images/Logo.png'}}" alt="{{'/images/Logo.png'}}" />
 
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
@@ -22,5 +22,5 @@
       </li>
     </ul>
   </div>
-  <a id="logout" class="nav-link" href="{{ route('logout') }}">Logout {{optional(Auth::user())->user_firstname}}</a>
+  <a id="logout" class="nav-link ml-auto" href="{{ route('logout') }}">Logout {{optional(Auth::user())->user_firstname}}</a>
 </nav>

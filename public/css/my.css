@@ -12,6 +12,9 @@ body > .container {
     margin-top: 40px;
 }
 
+.uper img.cover-image {
+    width: 100%;
+}
 nav a.nav-link {
     color: rgba(255, 255, 255, 0.5);
 }
@@ -22,6 +25,17 @@ nav .nav-link:hover {
 nav.navbar {
     padding: 0;
 }
+
+nav {
+    height: 84px;
+}
+@media only screen and (max-width: 800px) {
+    nav img.logo {
+        display: none;
+    }
+}
+
+
 .btn.btn-info {
     color: white;
 }
