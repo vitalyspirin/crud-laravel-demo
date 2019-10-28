@@ -68,7 +68,7 @@ trainium
 
 
 After that container maps ports 80 and 443. Open browser and type url of your server.
-If you want to use HTTP then make sure that you installed SSL certificate.
+If you want to use HTTPS then make sure that you installed SSL certificate.
 
 
 # Useful commands:

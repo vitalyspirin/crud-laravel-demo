@@ -26,18 +26,12 @@ RUN \
     \
     echo -e 'RewriteEngine on\n' >> .htaccess && \
     \
-    echo -e '# Freenom DNS service allow CNAME on subdomains only so we need www. subdomain' >> .htaccess && \
-    echo -e 'RewriteCond %{HTTP_HOST} !^www\. [NC]' >> .htaccess && \
-    echo -e 'RewriteCond %{HTTP_HOST} !^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}(:[0-9]+)?$' >> .htaccess && \
-    echo -e 'RewriteCond %{HTTP_HOST} !^dev\. [NC]' >> .htaccess && \
-    echo -e 'RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]\n' >> .htaccess && \
-    \
-    echo -e '# Redirect to HTTPS' >> .htaccess && \
-    echo -e 'RewriteCond %{HTTPS} !=on' >> .htaccess && \
-    echo -e 'RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]' >> .htaccess && \
-    echo -e 'RewriteCond %{REQUEST_URI} !^/healthcheck.txt' >> .htaccess && \
-    echo -e 'RewriteCond %{HTTP_HOST} ^([^:]+)(:[0-9]+)?$' >> .htaccess && \
-    echo -e 'RewriteRule ^ https://%1%{REQUEST_URI} [L,NE,R=301]\n' >> .htaccess && \
+    # echo -e '# Redirect to HTTPS' >> .htaccess && \
+    # echo -e 'RewriteCond %{HTTPS} !=on' >> .htaccess && \
+    # echo -e 'RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]' >> .htaccess && \
+    # echo -e 'RewriteCond %{REQUEST_URI} !^/healthcheck.txt' >> .htaccess && \
+    # echo -e 'RewriteCond %{HTTP_HOST} ^([^:]+)(:[0-9]+)?$' >> .htaccess && \
+    # echo -e 'RewriteRule ^ https://%1%{REQUEST_URI} [L,NE,R=301]\n' >> .htaccess && \
     \
     echo -e "RewriteRule ^(.*)$ /${DIRECTORY_NAME}/public/\$1 [NC,L]\n" >> .htaccess && \
     cd ${DIRECTORY_NAME} && \
