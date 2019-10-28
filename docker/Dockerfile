@@ -46,8 +46,8 @@ RUN \
     echo -e "cd /var/www/localhost/htdocs/${DIRECTORY_NAME}" >> /root/.profile && \
     \
     git config core.fileMode false && \
-    git pull `#&& \
-    composer install`
+    git pull && \
+    composer install
 
 CMD ["sh", "-c", ": && \
     cd /var/www/localhost/htdocs/${DIRECTORY_NAME} && \
