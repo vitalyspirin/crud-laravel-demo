@@ -47,7 +47,8 @@ RUN \
     \
     git config core.fileMode false && \
     git pull && \
-    composer install
+    composer install && \
+    if [ ! -f /var/www/localhost/htdocs/${DIRECTORY_NAME}/.env ]; then cp /var/www/localhost/htdocs/${DIRECTORY_NAME}/.env.example /var/www/localhost/htdocs/${DIRECTORY_NAME}/.env; fi
 
 CMD ["sh", "-c", ": && \
     cd /var/www/localhost/htdocs/${DIRECTORY_NAME} && \
