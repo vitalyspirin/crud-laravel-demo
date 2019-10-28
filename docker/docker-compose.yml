@@ -1,0 +1,71 @@
+version: '3'
+services:
+
+    mysql:
+        image: mysql/mysql-server:8.0
+        healthcheck:
+            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+            timeout: 20s
+            retries: 10
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+            MYSQL_ROOT_HOST: '%'
+            MYSQL_USER: $DB_USERNAME
+            MYSQL_PASSWORD: $DB_PASSWORD
+            MYSQL_DATABASE: $DB_DATABASE
+        ports:
+            - "3306:3306"
+        restart: always
+        entrypoint: ['/entrypoint.sh', '--default-authentication-plugin=mysql_native_password', '--log_bin_trust_function_creators=1']
+
+
+    php_backend:
+        environment:
+            DB_HOST: $DB_HOST
+            DB_USERNAME: $DB_USERNAME
+            DB_PASSWORD: $DB_PASSWORD
+            DB_DATABASE: $DB_DATABASE
+
+            DIRECTORY_NAME: $DIRECTORY_NAME
+            GIT_CLONE_URL: $GIT_CLONE_URL
+        build:
+            context: .
+            args:
+                DIRECTORY_NAME: $DIRECTORY_NAME
+                GIT_CLONE_URL: $GIT_CLONE_URL
+        ports:
+          - "80:80"
+          - "443:443"
+        depends_on:
+            - mysql
+        healthcheck:
+            test: ["CMD", "nc" ,"-z", "-w30", "localhost", "80"]
+            timeout: 20s
+            retries: 10
+        user: root
+        command: ["sh", "-c", "
+            while ! mysqladmin ping -h $${DB_HOST} --silent; do sleep 3; echo 'Waiting for MySql...'; done &&
+
+            if [ ! -d /var/www/localhost/htdocs/$${DIRECTORY_NAME}/public ]; then git clone $${GIT_CLONE_URL}; fi &&
+            chmod -R 777 /var/www/localhost/htdocs/$${DIRECTORY_NAME} &&
+            cd /var/www/localhost/htdocs/$${DIRECTORY_NAME} &&
+
+            git config core.fileMode false &&
+            git config --global user.email 'vitaly@hottomali.com' &&
+            git config --global user.name 'Vitaly Spirin' &&
+            git pull &&
+
+            composer install &&
+            php artisan migrate:refresh --seed &&
+
+            echo '==========================================================================' &&
+            cat /etc/os-release | grep PRETTY_NAME && echo -e &&
+            php -v | grep 'PHP 7' && echo -e &&
+            mysql -h $${DB_HOST} -u root -e 'status' | grep -e '^Server\\sversion:' && echo -e &&
+            httpd -v &&
+            echo '==========================================================================' &&
+            echo 'Backend IS RUNNING (listining on ports 80, 443 and 3306). ' &&
+            /usr/sbin/httpd -D FOREGROUND"
+        ]
+        volumes:
+            - ./${DIRECTORY_NAME}:/var/www/localhost/htdocs/${DIRECTORY_NAME}
