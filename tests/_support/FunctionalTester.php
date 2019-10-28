@@ -22,6 +22,9 @@ class FunctionalTester extends \Codeception\Actor
     const USER_EMAIL = 'vitaly.spirin@gmail.com';
     const USER_PASSWORD = 'vitaly';
 
+    const DISABLED_USER_EMAIL = 'john.black@gmail.com';
+    const DISABLED_USER_PASSWORD = 'john';
+
     /**
      * Define custom actions here.
      */
