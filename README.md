@@ -69,12 +69,16 @@ If you are installing Docker on Amazon Linux then you can do it by running
 the following commands:
 
 ```
-sudo yum install docker
+sudo yum -y install docker
 
 sudo usermod -aG docker $USER
 
 sudo service docker restart
+
+docker --version
 ```
+
+You need to relogin after that.
 
 # Installing Docker Compose
 
