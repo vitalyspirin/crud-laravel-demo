@@ -52,7 +52,7 @@
 
               <div class="col-4">
                 <label class="w-100">Address Postal Code:
-                  <input type="text" class="form-control address_postal" name="user_address[address_postal]"
+                  <input type="text" class="form-control address_postal" name="user_address[{{$key + 1}}][address_postal]"
                     value="{{ old('address_postal' . ($key + 1), $address['address_postal']) }}" />
                 </label>
               </div>

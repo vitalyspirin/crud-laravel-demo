@@ -113,6 +113,10 @@
       newContactSection.querySelector('input.contact_type').name = 'user_contact[' + index + '][contact_type]';
       newContactSection.querySelector('input.contact_value').name = 'user_contact[' + index + '][contact_value]';
 
+      newContactSection.querySelector('.contact-section').id = 'contact-section-' + index;
+      newContactSection.querySelector('.delete-contact-section').setAttribute('onclick',
+        "Form.deleteSection('contact-section-" + index + "')");
+
 
       document.getElementById('contact-section-list').appendChild(newContactSection);
 
@@ -133,6 +137,9 @@
       newAddressSection.querySelector('input.address_country').name = 'user_address[' + index + '][address_country]';
       newAddressSection.querySelector('input.address_postal').name = 'user_address[' + index + '][address_postal]';
 
+      newAddressSection.querySelector('.address-section').id = 'address-section-' + index;
+      newAddressSection.querySelector('.delete-address-section').setAttribute('onclick',
+        "Form.deleteSection('address-section-" + index + "')");
 
       document.getElementById('address-section-list').appendChild(newAddressSection);
 

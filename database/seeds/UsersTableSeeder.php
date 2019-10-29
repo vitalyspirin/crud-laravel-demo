@@ -60,8 +60,24 @@ class UsersTableSeeder extends Seeder
                 'user_isenabled' => false,
                 'user_email' => 'john.black@gmail.com',
                 'user_passwordhash' => Hash::make('john'),
-                'user_address' => json_encode([]),
-                'user_contact' => json_encode([]),
+                'user_address' => json_encode([
+                    [
+                        'address_type' => 'Home',
+                        'address_street' => '1 Manor Str',
+                        'address_city' => 'Burnaby',
+                        'address_province' => 'BC',
+                        'address_country' => 'Canada',
+                        'address_postal' => ' V5G 1B2',
+                        'address_default' => true,
+                    ],
+                ]),
+                'user_contact' => json_encode([
+                    [
+                        'contact_type' => 'Email',
+                        'contact_value' => 'john.black@gmail.com',
+                        'contact_default' => true,
+                    ],
+                ]),
             ],
 
             [

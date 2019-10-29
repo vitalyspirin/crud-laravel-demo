@@ -47,6 +47,8 @@ class UserFormRequest extends FormRequest
             }
         }
 
+        $input['user_contact'] = array_values($input['user_contact']);
+
         if (! empty($input['user_address'])) {
             $defaultAddress = $input['user_address']['address_default'];
             unset($input['user_address']['address_default']);
@@ -59,6 +61,8 @@ class UserFormRequest extends FormRequest
                 }
             }
         }
+
+        $input['user_address'] = array_values($input['user_address']);
 
         return $input;
     }
