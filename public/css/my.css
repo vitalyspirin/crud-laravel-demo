@@ -43,7 +43,9 @@ nav {
 dt, dd {
     display: inline-block;
 }
-
+dt::after {
+    content: ":";
+}
 dd {
     margin-left: 0.5rem;
 }

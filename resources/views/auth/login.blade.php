@@ -41,18 +41,6 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <div class="col-md-6 offset-md-4">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                <label class="form-check-label" for="remember">
-                                    {{ __('Remember Me') }}
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="form-group row mb-0">
                         <div class="col-md-8 offset-md-4">
                             <button type="submit" id="submit" class="btn btn-primary">
@@ -72,17 +60,6 @@
     </div>
 </div>
 
-
-<button class="fixed-top mr-1 mt-1 btn btn-warning" style="left: auto" onclick="login('vitaly.spirin@gmail.com', 'vitaly');">Login as Vitaly</button>
-
-<script>
-    function login(user_email, password) {
-        document.getElementById('user_email').value = user_email;
-        document.getElementById('password').value = password;
-
-        document.getElementById('submit').click();
-    }
-</script>
 
 
 @endsection

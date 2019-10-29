@@ -1,10 +1,5 @@
 <!DOCTYPE html>
-<!-- url={{ url()->full() }} -->
-<!--
-@php
-  var_dump(request()->all());
-@endphp
--->
+
 @php
   $title = 'Relax CMS';
 
@@ -41,13 +36,6 @@
 
     @yield('content')
   </div><!-- class="container" -->
-
-
-  <a href="http://validator.w3.org/check?uri=referer"
-    onclick="this.href='http://validator.w3.org/check?uri='+ encodeURIComponent(document.URL +'?test')" id="html5-validator-link">
-    <img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_64.png" alt="Valid HTML 5!" height="64" width="64" />
-  </a>
-
 
 
 </body>

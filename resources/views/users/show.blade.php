@@ -11,22 +11,22 @@
 
     <dl>
         <div class="form-group row">
-            <dt>User First Name</dt>:
+            <dt>User First Name</dt>
             <dd>{{$user->user_firstname}}</dd>
         </div>
 
         <div class="form-group row">
-            <dt>User Last Name</dt>:
+            <dt>User Last Name</dt>
             <dd>{{$user->user_lastname}}</dd>
         </div>
 
         <div class="form-group row">
-            <dt>User Email</dt>:
+            <dt>User Email</dt>
             <dd>{{$user->user_email}}</dd>
         </div>
 
         <div class="form-group row">
-            <dt>User Enabled</dt>:
+            <dt>User Enabled</dt>
             <dd>{{ ($user->user_isenabled ? 'Yes' : 'No')}}</dd>
         </div>
     </dl>
@@ -35,7 +35,7 @@
         <hr class="row" />
         <dl>
             <div class="form-group row">
-                <dt>{{ $address['address_type'] . ' address'. ($address['address_default'] ? ' (default)' : '') }}</dt>:
+                <dt>{{ $address['address_type'] . ' address'. ($address['address_default'] ? ' (default)' : '') }}</dt>
                 <dd>{{ \App\User::getAddressString($address) }}</dd>
             </div>
         </dl>
@@ -45,7 +45,7 @@
         <hr class="row" />
         <dl>
             <div class="form-group row">
-                <dt>Contact {{ $contact['contact_type'] . ($contact['contact_default'] ? ' (default)' : '') }}</dt>:
+                <dt>Contact {{ $contact['contact_type'] . ($contact['contact_default'] ? ' (default)' : '') }}</dt>
                 <dd>{{ $contact['contact_value'] }}</dd>
             </div>
         </dl>

@@ -12,5 +12,5 @@
 
   <img src="/images/Hero.jpg" class="cover-image" alt="/images/Hero.jpg" />
 
-<div>
+</div>
 @endsection

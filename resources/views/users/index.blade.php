@@ -21,7 +21,7 @@
           <th>User First Name</th>
           <th>User Last Name</th>
           <th>User Email</th>
-          <th colspan="3">Action</th>
+          <th colspan="4">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -62,5 +62,5 @@
         @endforeach
     </tbody>
   </table>
-<div>
+</div>
 @endsection
