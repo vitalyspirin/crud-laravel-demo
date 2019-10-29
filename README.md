@@ -1,6 +1,8 @@
 # Installing on Development server
 
-1) Install Docker and Docker Compose.
+Make sure you have 1GB of RAM on the server otherwise MySql container won't run!
+
+1) Install Docker and Docker Compose (see sections at the bottom).
 
 2) Copy files: Dockerfile, docker-compose.yml, .env to your environment
 by running the following commands:
@@ -23,18 +25,8 @@ After that container maps ports 80 and 443. Open browser and type url of your se
 
 # Installing on Production server
 
-1) Install Docker.
+1) Install Docker (see section at the bottom about how to install Docker).
 
-If you are installing Docker on Amazon Linux then you can do it by running
-the following commands:
-
-```
-sudo yum install docker
-
-sudo usermod -aG docker $USER
-
-sudo service docker restart
-```
 
 2) Copy file Dockerfile to your environment by executing command below:
 
@@ -70,6 +62,34 @@ trainium
 After that container maps ports 80 and 443. Open browser and type url of your server.
 If you want to use HTTPS then make sure that you installed SSL certificate.
 
+
+# Installing Docker
+
+If you are installing Docker on Amazon Linux then you can do it by running
+the following commands:
+
+```
+sudo yum install docker
+
+sudo usermod -aG docker $USER
+
+sudo service docker restart
+```
+
+# Installing Docker Compose
+
+If you are installing Docker Compose on Amazon Linux then you can do it
+by running the following commands:
+
+```
+sudo curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-`uname -s`-`uname -m` | sudo tee /usr/local/bin/docker-compose > /dev/null
+
+sudo chmod +x /usr/local/bin/docker-compose
+
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+docker-compose --version
+```
 
 # Useful commands:
 
