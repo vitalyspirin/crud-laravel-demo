@@ -1,6 +1,6 @@
 <?php
 
-class ListUsersCest
+class UserListCest
 {
     public function _before(FunctionalTester $I)
     {

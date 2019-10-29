@@ -1,6 +1,6 @@
 <?php
 
-class ViewUserCest
+class UserViewCest
 {
     public function _before(FunctionalTester $I)
     {
