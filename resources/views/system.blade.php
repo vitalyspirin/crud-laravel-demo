@@ -14,5 +14,5 @@
 {{ json_encode($info, JSON_PRETTY_PRINT) }}
     </pre>
 
-<div>
+</div>
 @endsection
